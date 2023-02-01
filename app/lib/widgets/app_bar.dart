@@ -19,10 +19,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               height: 40,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage('https://picsum.photos/200'),
-                  fit: BoxFit.fill,
-                ),
+                color: Colors.deepPurple,
+              ),
+              margin: const EdgeInsets.only(right: 10),
+              child: const Icon(
+                Icons.person,
+                color: Colors.white,
+                size: 20,
               ),
             ),
           ],
