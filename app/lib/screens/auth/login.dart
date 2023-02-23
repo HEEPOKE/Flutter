@@ -1,4 +1,5 @@
 import 'package:app/widgets/app_bar.dart';
+import 'package:app/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -14,6 +15,8 @@ class LoginScreen extends StatelessWidget {
           textDirection: TextDirection.ltr,
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: MyBottomAppBar(),
     );
   }
 }
