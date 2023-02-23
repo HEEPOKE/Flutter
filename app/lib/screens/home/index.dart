@@ -1,3 +1,4 @@
+import 'package:app/navigation/index.dart';
 import 'package:app/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -6,12 +7,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: MyAppBar(),
+    return Scaffold(
+      appBar: const MyAppBar(),
       body: Center(
-        child: Text(
-          'Hello, world!',
-          textDirection: TextDirection.ltr,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Welcome to my app!'),
+            const SizedBox(height: 72),
+            ElevatedButton(
+                onPressed: () => Navigator.pushNamed(context, AppRoutes.login),
+                child: const Text('Go to login Screen')),
+          ],
         ),
       ),
     );
