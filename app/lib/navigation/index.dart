@@ -11,11 +11,11 @@ class AppRoutes {
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case AppRoutes.home:
+      case home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case AppRoutes.login:
+      case login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
-      case AppRoutes.register:
+      case register:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       default:
         return MaterialPageRoute(builder: (_) => const ErrorScreen());

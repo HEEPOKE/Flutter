@@ -1,4 +1,3 @@
-import 'package:app/navigation/index.dart';
 import 'package:app/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +15,7 @@ class HomeScreen extends StatelessWidget {
             const Text('Welcome to my app!'),
             const SizedBox(height: 72),
             ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, AppRoutes.login),
+                onPressed: () => Navigator.pushNamed(context, "/login"),
                 child: const Text('Go to login Screen')),
           ],
         ),
