@@ -1,5 +1,5 @@
+import 'package:app/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
-import '../../widgets/app_bar.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({Key? key}) : super(key: key);

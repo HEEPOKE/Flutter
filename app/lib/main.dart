@@ -1,6 +1,5 @@
+import 'package:app/navigation/index.dart';
 import 'package:flutter/material.dart';
-import 'navigation/index.dart';
-import 'screens/home/index.dart';
 
 void main() {
   runApp(const MyApp());
