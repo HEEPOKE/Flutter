@@ -41,14 +41,16 @@ class MyBottomAppBar extends StatelessWidget {
             width: 50,
             height: 50,
             child: IconButton(
-              icon: const Icon(Icons.arrow_left, size: 40),
+              icon: const Icon(Icons.arrow_back),
               color: Colors.white,
-              onPressed: () => navigateToSearch(context),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ),
           SizedBox(
             width: 50,
-            height: 35,
+            height: 50,
             child: IconButton(
               icon: const Icon(Icons.home),
               color: Colors.white,
@@ -57,7 +59,7 @@ class MyBottomAppBar extends StatelessWidget {
           ),
           SizedBox(
             width: 50,
-            height: 35,
+            height: 50,
             child: IconButton(
               icon: const Icon(Icons.settings),
               color: Colors.white,
