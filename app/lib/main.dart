@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'navigation/index.dart';
 import 'screens/home/index.dart';
 
 void main() {
@@ -11,7 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomeScreen(),
+      title: 'My App',
+      initialRoute: AppRoutes.home,
+      onGenerateRoute: generateRoute,
     );
   }
 }
