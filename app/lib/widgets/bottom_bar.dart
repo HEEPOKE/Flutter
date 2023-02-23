@@ -32,22 +32,37 @@ class MyBottomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
-      color: Colors.blue,
+      color: Colors.deepPurpleAccent,
       shape: const CircularNotchedRectangle(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          IconButton(
-            icon: const Icon(Icons.home),
-            onPressed: () => navigateToHome(context),
+          SizedBox(
+            width: 50,
+            height: 50,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_left, size: 40),
+              color: Colors.white,
+              onPressed: () => navigateToSearch(context),
+            ),
           ),
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () => navigateToSearch(context),
+          SizedBox(
+            width: 50,
+            height: 35,
+            child: IconButton(
+              icon: const Icon(Icons.home),
+              color: Colors.white,
+              onPressed: () => navigateToHome(context),
+            ),
           ),
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () => navigateToSettings(context),
+          SizedBox(
+            width: 50,
+            height: 35,
+            child: IconButton(
+              icon: const Icon(Icons.settings),
+              color: Colors.white,
+              onPressed: () => navigateToSettings(context),
+            ),
           ),
         ],
       ),

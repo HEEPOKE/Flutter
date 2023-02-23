@@ -8,6 +8,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.deepPurpleAccent,
           leading: IconButton(
             icon: const Icon(Icons.menu),
             onPressed: () {},
@@ -19,12 +20,12 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
               height: 40,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.deepPurple,
+                color: Colors.white,
               ),
               margin: const EdgeInsets.only(right: 10),
               child: const Icon(
                 Icons.person,
-                color: Colors.white,
+                color: Colors.deepPurpleAccent,
                 size: 20,
               ),
             ),
