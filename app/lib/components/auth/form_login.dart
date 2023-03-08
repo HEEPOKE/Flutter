@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app/services/auth/login_services.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -90,7 +91,26 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  void _handleLogin() {}
+  Future<void> _handleLogin() async {
+    final email = _emailController.text;
+    final password = _passwordController.text;
+
+    try {
+      final result = await LoginService.post(
+          '/api/auth/login', {'email': email, 'password': password});
+
+      if (result['success']) {
+        final data = result['data'];
+        print(data);
+      } else {
+        throw Exception(result[
+            'error']); // Throw an exception if the result is not successful.
+      }
+    } catch (e) {
+      // Catch the exception and print it out.
+      print(e);
+    }
+  }
 
   @override
   void dispose() {
