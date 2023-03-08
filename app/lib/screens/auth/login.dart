@@ -1,18 +1,18 @@
-import 'package:app/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:app/components/auth/form_login.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: MyAppBar(),
-      body: Center(
-        child: Text(
-          'login page',
-          textDirection: TextDirection.ltr,
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('MyApp'),
+        backgroundColor: Colors.deepPurpleAccent,
+      ),
+      body: const Center(
+        child: LoginForm(),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
