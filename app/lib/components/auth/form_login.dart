@@ -30,15 +30,24 @@ class _LoginFormState extends State<LoginForm> {
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
-                filled: true,
-                fillColor: Colors.grey[200],
                 hintText: 'Email',
-                prefixIcon: const Icon(Icons.email),
-                border: OutlineInputBorder(
+                prefixIcon:
+                    const Icon(Icons.email, color: Colors.deepPurpleAccent),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Colors.deepPurpleAccent,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Colors.grey,
+                    width: 1.0,
+                  ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-              cursorColor: Colors.deepPurpleAccent,
             ),
             const SizedBox(height: 16.0),
             TextField(
@@ -46,12 +55,23 @@ class _LoginFormState extends State<LoginForm> {
               obscureText: true,
               decoration: InputDecoration(
                 hintText: 'Password',
-                prefixIcon: const Icon(Icons.lock),
-                border: OutlineInputBorder(
+                prefixIcon:
+                    const Icon(Icons.lock, color: Colors.deepPurpleAccent),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Colors.deepPurpleAccent,
+                    width: 2.0,
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    color: Colors.grey,
+                    width: 1.0,
+                  ),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-              cursorColor: Colors.deepPurpleAccent,
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
