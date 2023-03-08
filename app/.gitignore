@@ -68,3 +68,5 @@ key.properties
 .flutter-plugins
 .flutter-plugins-dependencies
 .flutter-sdk
+
+.env
