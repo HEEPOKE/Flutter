@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class LoginForm extends StatefulWidget {
-  const LoginForm({super.key});
+  const LoginForm({Key? key}) : super(key: key);
 
   @override
   _LoginFormState createState() => _LoginFormState();
 }
 
 class _LoginFormState extends State<LoginForm> {
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +44,26 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
             const SizedBox(height: 16.0),
-            RaisedButton(
-              onPressed: () {},
+            ElevatedButton(
+              onPressed: _handleLogin,
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.deepPurpleAccent),
+              ),
               child: const Text('Login'),
             ),
           ],
         ),
       ),
     );
+  }
+
+  void _handleLogin() {}
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }
