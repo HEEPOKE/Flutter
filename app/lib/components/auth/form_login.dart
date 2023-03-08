@@ -103,11 +103,9 @@ class _LoginFormState extends State<LoginForm> {
         final data = result['data'];
         print(data);
       } else {
-        throw Exception(result[
-            'error']); // Throw an exception if the result is not successful.
+        throw Exception(result['error']);
       }
     } catch (e) {
-      // Catch the exception and print it out.
       print(e);
     }
   }
