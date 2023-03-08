@@ -13,11 +13,11 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Welcome to my app!'),
+            const Text('Welcome to Home'),
             const SizedBox(height: 72),
             ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, "/login"),
-                child: const Text('Go to login Screen')),
+                onPressed: () => Navigator.pushNamed(context, "/form"),
+                child: const Text('Go to form Screen')),
           ],
         ),
       ),

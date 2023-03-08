@@ -5,18 +5,18 @@ import 'package:app/screens/home/index.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
-  static const String home = '/';
-  static const String login = '/login';
+  static const String login = '/';
   static const String register = '/register';
+  static const String home = '/home';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case home:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
       case login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case register:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
+      case home:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return MaterialPageRoute(builder: (_) => const ErrorScreen());
     }

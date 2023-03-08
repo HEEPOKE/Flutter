@@ -22,11 +22,11 @@ class MyBottomAppBar extends StatelessWidget {
   }
 
   void navigateToSearch(BuildContext context) {
-    Navigator.pushNamed(context, "/login");
+    Navigator.pushNamed(context, "/");
   }
 
   void navigateToSettings(BuildContext context) {
-    Navigator.pushNamed(context, "/");
+    Navigator.pushNamed(context, "/setting");
   }
 
   @override

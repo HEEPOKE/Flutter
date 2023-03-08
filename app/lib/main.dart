@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'My App',
-      initialRoute: AppRoutes.home,
+      initialRoute: AppRoutes.login,
       onGenerateRoute: AppRoutes.generateRoute,
     );
   }
