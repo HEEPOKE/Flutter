@@ -8,7 +8,7 @@ class LoginService {
 
   static Future<Map<String, dynamic>> post(
       String endpoint, dynamic data) async {
-    final url = Uri.parse('$baseUrl/$endpoint');
+    final url = Uri.parse(baseUrl + endpoint);
     final headers = {
       HttpHeaders.contentTypeHeader: 'application/json',
     };
