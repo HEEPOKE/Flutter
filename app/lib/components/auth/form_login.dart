@@ -96,11 +96,11 @@ class _LoginFormState extends State<LoginForm> {
     final password = _passwordController.text;
 
     try {
-      final result = await LoginService.post(
-          '/api/auth/login', {'email': email, 'password': password});
+      final result = await LoginService.post('/api/auth/login',
+          {'username_or_email': email, 'password': password});
 
       if (result['success']) {
-        final data = result['data'];
+        final data = result['payload']['payload'];
         print(data);
       } else {
         throw Exception(result['error']);

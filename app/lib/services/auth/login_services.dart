@@ -16,12 +16,14 @@ class LoginService {
     final response = await http.post(url, headers: headers, body: body);
 
     if (response.statusCode == 200) {
-      return {
-        'success': true,
-        'payload': json.decode(response.body)['payload']
-      };
+      final data = jsonDecode(response.body);
+      return {'success': true, 'payload': data};
     } else {
-      return {'success': false, 'error': json.decode(response.body)['message']};
+      return {
+        'success': false,
+        'error': json.decode(response.body)['message'],
+        'status': response.statusCode
+      };
     }
   }
 }
