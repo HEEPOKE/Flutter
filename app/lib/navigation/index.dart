@@ -5,9 +5,9 @@ import 'package:app/screens/home/index.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
-  static const String login = '/';
+  static const String home = '/';
+  static const String login = '/login';
   static const String register = '/register';
-  static const String home = '/home';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
