@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:app/services/auth/login_services.dart';
 
 class LoginForm extends StatefulWidget {
@@ -31,9 +33,9 @@ class _LoginFormState extends State<LoginForm> {
             TextField(
               controller: _emailController,
               decoration: InputDecoration(
-                hintText: 'Email',
+                hintText: 'Email OR Username',
                 prefixIcon:
-                    const Icon(Icons.email, color: Colors.deepPurpleAccent),
+                    const Icon(Icons.person, color: Colors.deepPurpleAccent),
                 focusedBorder: OutlineInputBorder(
                   borderSide: const BorderSide(
                     color: Colors.deepPurpleAccent,
@@ -101,7 +103,18 @@ class _LoginFormState extends State<LoginForm> {
 
       if (result['success']) {
         final data = result['payload']['payload'];
-        print(data);
+        final userId = data['userId'];
+        final token = data['token'];
+        final exp = data['exp'];
+
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        prefs.setString('userId', userId);
+        prefs.setString('token', token);
+        prefs.setString('exp', exp);
+        String? storedToken = prefs.getString('token');
+        String? storedUserId = prefs.getString('userId');
+        String? storedExp = prefs.getString('exp');
+        print(storedExp);
       } else {
         throw Exception(result['error']);
       }

@@ -38,6 +38,7 @@ dependencies:
   flutter_form_builder: ^7.7.0
   http: ^0.13.5
   flutter_dotenv: ^5.0.0
+  shared_preferences: ^2.0.18
 
 dev_dependencies:
   flutter_test:
