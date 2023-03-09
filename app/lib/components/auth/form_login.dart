@@ -110,11 +110,11 @@ class _LoginFormState extends State<LoginForm> {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('userId', userId);
         prefs.setString('token', token);
-        prefs.setString('exp', exp);
+        prefs.setString('exp', exp.toString());
         String? storedToken = prefs.getString('token');
         String? storedUserId = prefs.getString('userId');
         String? storedExp = prefs.getString('exp');
-        print(storedExp);
+        print(storedUserId);
       } else {
         throw Exception(result['error']);
       }
