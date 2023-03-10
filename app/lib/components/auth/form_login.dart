@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:app/services/auth/login_services.dart';
+import 'package:app/controllers/auth/login_controller.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -77,7 +76,10 @@ class _LoginFormState extends State<LoginForm> {
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: _handleLogin,
+              onPressed: () async {
+                await handleLogin(context, _passwordController.text,
+                    _passwordController.text);
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurpleAccent,
                 shape: RoundedRectangleBorder(
@@ -90,37 +92,6 @@ class _LoginFormState extends State<LoginForm> {
         ),
       ),
     );
-  }
-
-  Future<void> _handleLogin() async {
-    final email = _emailController.text;
-    final password = _passwordController.text;
-
-    try {
-      final result = await LoginService.post('/api/auth/login',
-          {'username_or_email': email, 'password': password});
-
-      if (result['success']) {
-        final data = result['payload']['payload'];
-        final userId = data['userId'];
-        final role = data['role'];
-        final token = data['token'];
-        final exp = data['exp'];
-
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString('userId', userId);
-        prefs.setString('role', role);
-        prefs.setString('token', token);
-        prefs.setString('exp', exp.toString());
-        String? storedToken = prefs.getString('token');
-        String? storedUserId = prefs.getString('userId');
-        String? storedExp = prefs.getString('exp');
-      } else {
-        throw Exception(result['error']);
-      }
-    } catch (e) {
-      print(e);
-    }
   }
 
   @override
