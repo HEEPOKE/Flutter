@@ -13,7 +13,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  late String _loginError;
+  late String _loginError = '';
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +32,20 @@ class _LoginFormState extends State<LoginForm> {
             ),
             const SizedBox(height: 16.0),
             CommonTextField(
-              controller: _passwordController,
-              hintText: 'Password',
-              prefixIcon: Icons.lock,
-              errorText: _loginError.isNotEmpty
-                  ? 'Username or Email is incorrect'
-                  : '',
-            ),
-            const SizedBox(height: 16.0),
-            CommonTextField(
               controller: _emailController,
               hintText: 'Email OR Username',
               prefixIcon: Icons.person,
               errorText: _loginError.isNotEmpty ? 'password is incorrect' : '',
+            ),
+            const SizedBox(height: 16.0),
+            CommonTextField(
+              controller: _passwordController,
+              hintText: 'Password',
+              prefixIcon: Icons.lock,
+              obscureText: true,
+              errorText: _loginError.isNotEmpty
+                  ? 'Username or Email is incorrect'
+                  : '',
             ),
             const SizedBox(height: 16.0),
             CommonElevatedButton(
