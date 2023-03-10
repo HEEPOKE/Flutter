@@ -1,3 +1,4 @@
+import 'package:app/common/common_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:app/common/common_textfield.dart';
 import 'package:app/controllers/auth/login_controller.dart';
@@ -46,26 +47,16 @@ class _LoginFormState extends State<LoginForm> {
               errorText: _loginError.isNotEmpty ? 'password is incorrect' : '',
             ),
             const SizedBox(height: 16.0),
-            _buildLoginButton(),
+            CommonElevatedButton(
+              onPressed: () async {
+                await handleLogin(context, _emailController.text,
+                    _passwordController.text, showError);
+              },
+              label: 'Login',
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildLoginButton() {
-    return ElevatedButton(
-      onPressed: () async {
-        await handleLogin(context, _emailController.text,
-            _passwordController.text, showError);
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.deepPurpleAccent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-      ),
-      child: const Text('Login'),
     );
   }
 
