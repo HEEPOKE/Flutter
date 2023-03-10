@@ -17,12 +17,21 @@ class LoginService {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      return {'success': true, 'payload': data};
+      if (data['status'] == "error") {
+        return {
+          'success': false,
+          'message': data['description'],
+          'payload': []
+        };
+      } else {
+        return {'success': true, 'message': null, 'payload': data};
+      }
     } else {
       return {
         'success': false,
         'error': json.decode(response.body)['message'],
-        'status': response.statusCode
+        'status': response.statusCode,
+        'message': null
       };
     }
   }

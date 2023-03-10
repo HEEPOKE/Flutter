@@ -3,13 +3,15 @@ import 'package:app/navigation/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:app/services/auth/login_services.dart';
 
-Future<void> handleLogin(
-    BuildContext context, String email, String password) async {
+Future<void> handleLogin(BuildContext context, String email, String password,
+    Function showError) async {
   try {
     final result = await LoginService.post(
         '/api/auth/login', {'username_or_email': email, 'password': password});
 
-    if (result['success']) {
+    if (!result['success']) {
+      showError(result['message']);
+    } else {
       final data = result['payload']['payload'];
       final userId = data['userId'];
       final role = data['role'];
@@ -26,8 +28,6 @@ Future<void> handleLogin(
       String? storedExp = prefs.getString('exp');
 
       Navigator.pushNamed(context, AppRoutes.home);
-    } else {
-      throw Exception(result['error']);
     }
   } catch (e) {
     print(e);

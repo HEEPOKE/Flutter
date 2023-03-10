@@ -11,6 +11,7 @@ class LoginForm extends StatefulWidget {
 class _LoginFormState extends State<LoginForm> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  late String _loginError;
 
   @override
   Widget build(BuildContext context) {
@@ -28,70 +29,91 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
             const SizedBox(height: 16.0),
-            TextField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                hintText: 'Email OR Username',
-                prefixIcon:
-                    const Icon(Icons.person, color: Colors.deepPurpleAccent),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.deepPurpleAccent,
-                    width: 2.0,
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-            ),
+            _buildEmailTextField(),
             const SizedBox(height: 16.0),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: 'Password',
-                prefixIcon:
-                    const Icon(Icons.lock, color: Colors.deepPurpleAccent),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.deepPurpleAccent,
-                    width: 2.0,
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(
-                    color: Colors.grey,
-                    width: 1.0,
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-            ),
+            _buildPasswordTextField(),
             const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () async {
-                await handleLogin(
-                    context, _emailController.text, _passwordController.text);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurpleAccent,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-              ),
-              child: const Text('Login'),
-            ),
+            _buildLoginButton(),
           ],
         ),
       ),
     );
+  }
+
+  Widget _buildEmailTextField() {
+    return TextField(
+      controller: _emailController,
+      decoration: InputDecoration(
+        hintText: 'Email OR Username',
+        prefixIcon: const Icon(Icons.person, color: Colors.deepPurpleAccent),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.deepPurpleAccent,
+            width: 2.0,
+          ),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.grey,
+            width: 1.0,
+          ),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        errorText:
+            _loginError.isNotEmpty ? 'Username or Email is incorrect' : null,
+        errorStyle: const TextStyle(color: Colors.red),
+      ),
+    );
+  }
+
+  Widget _buildPasswordTextField() {
+    return TextField(
+      controller: _passwordController,
+      obscureText: true,
+      decoration: InputDecoration(
+        hintText: 'Password',
+        prefixIcon: const Icon(Icons.lock, color: Colors.deepPurpleAccent),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.deepPurpleAccent,
+            width: 2.0,
+          ),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.grey,
+            width: 1.0,
+          ),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        errorText: _loginError.isNotEmpty ? 'password is incorrect' : null,
+        errorStyle: const TextStyle(color: Colors.red),
+      ),
+    );
+  }
+
+  Widget _buildLoginButton() {
+    return ElevatedButton(
+      onPressed: () async {
+        await handleLogin(context, _emailController.text,
+            _passwordController.text, showError);
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.deepPurpleAccent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+      ),
+      child: const Text('Login'),
+    );
+  }
+
+  void showError(String errorMessage) {
+    setState(() {
+      _loginError = errorMessage;
+    });
   }
 
   @override
