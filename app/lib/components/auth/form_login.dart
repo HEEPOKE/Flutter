@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:app/common/common_textfield.dart';
 import 'package:app/controllers/auth/login_controller.dart';
 
 class LoginForm extends StatefulWidget {
@@ -29,67 +30,25 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ),
             const SizedBox(height: 16.0),
-            _buildEmailTextField(),
+            CommonTextField(
+              controller: _passwordController,
+              hintText: 'Password',
+              prefixIcon: Icons.lock,
+              errorText: _loginError.isNotEmpty
+                  ? 'Username or Email is incorrect'
+                  : '',
+            ),
             const SizedBox(height: 16.0),
-            _buildPasswordTextField(),
+            CommonTextField(
+              controller: _emailController,
+              hintText: 'Email OR Username',
+              prefixIcon: Icons.person,
+              errorText: _loginError.isNotEmpty ? 'password is incorrect' : '',
+            ),
             const SizedBox(height: 16.0),
             _buildLoginButton(),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildEmailTextField() {
-    return TextField(
-      controller: _emailController,
-      decoration: InputDecoration(
-        hintText: 'Email OR Username',
-        prefixIcon: const Icon(Icons.person, color: Colors.deepPurpleAccent),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.deepPurpleAccent,
-            width: 2.0,
-          ),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.grey,
-            width: 1.0,
-          ),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        errorText:
-            _loginError.isNotEmpty ? 'Username or Email is incorrect' : null,
-        errorStyle: const TextStyle(color: Colors.red),
-      ),
-    );
-  }
-
-  Widget _buildPasswordTextField() {
-    return TextField(
-      controller: _passwordController,
-      obscureText: true,
-      decoration: InputDecoration(
-        hintText: 'Password',
-        prefixIcon: const Icon(Icons.lock, color: Colors.deepPurpleAccent),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.deepPurpleAccent,
-            width: 2.0,
-          ),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: Colors.grey,
-            width: 1.0,
-          ),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        errorText: _loginError.isNotEmpty ? 'password is incorrect' : null,
-        errorStyle: const TextStyle(color: Colors.red),
       ),
     );
   }

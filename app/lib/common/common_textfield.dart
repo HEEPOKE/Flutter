@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatelessWidget {
+class CommonTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final IconData prefixIcon;
   final bool obscureText;
   final String errorText;
 
-  const CustomTextField({
+  const CommonTextField({
     Key? key,
     required this.controller,
     required this.hintText,
     required this.prefixIcon,
-    this.obscureText = false,
+    this.obscureText = true,
     this.errorText = '',
   }) : super(key: key);
 
