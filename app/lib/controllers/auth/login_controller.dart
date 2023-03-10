@@ -6,6 +6,7 @@ import 'package:app/services/auth/login_services.dart';
 Future<void> handleLogin(BuildContext context, String email, String password,
     Function showError) async {
   try {
+    showError("");
     final result = await LoginService.post(
         '/api/auth/login', {'username_or_email': email, 'password': password});
 
