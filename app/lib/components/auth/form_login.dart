@@ -35,7 +35,9 @@ class _LoginFormState extends State<LoginForm> {
               controller: _emailController,
               hintText: 'Email OR Username',
               prefixIcon: Icons.person,
-              errorText: _loginError.isNotEmpty ? 'password is incorrect' : '',
+              errorText: _loginError.isNotEmpty
+                  ? 'Username or Email is incorrect'
+                  : '',
             ),
             const SizedBox(height: 16.0),
             CommonTextField(
@@ -43,9 +45,7 @@ class _LoginFormState extends State<LoginForm> {
               hintText: 'Password',
               prefixIcon: Icons.lock,
               obscureText: true,
-              errorText: _loginError.isNotEmpty
-                  ? 'Username or Email is incorrect'
-                  : '',
+              errorText: _loginError.isNotEmpty ? 'password is incorrect' : '',
             ),
             const SizedBox(height: 16.0),
             CommonElevatedButton(

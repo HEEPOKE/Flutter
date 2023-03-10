@@ -33,6 +33,10 @@ class CommonTextField extends StatelessWidget {
           borderSide: const BorderSide(color: Colors.grey, width: 1.0),
           borderRadius: BorderRadius.circular(10.0),
         ),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.red, width: 1.0),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
         errorText: errorText.isNotEmpty ? errorText : null,
         errorStyle: const TextStyle(color: Colors.red),
       ),

@@ -27,7 +27,7 @@ Future<void> handleLogin(BuildContext context, String email, String password,
 
       Navigator.pushNamed(context, AppRoutes.home);
     } else {
-      showError(result['error']);
+      showError(result['description']);
     }
   } catch (e) {
     print(e);
