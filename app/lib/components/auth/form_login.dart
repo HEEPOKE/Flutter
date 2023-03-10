@@ -77,8 +77,8 @@ class _LoginFormState extends State<LoginForm> {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () async {
-                await handleLogin(context, _passwordController.text,
-                    _passwordController.text);
+                await handleLogin(
+                    context, _emailController.text, _passwordController.text);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurpleAccent,
