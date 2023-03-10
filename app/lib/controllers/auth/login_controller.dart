@@ -10,7 +10,7 @@ Future<void> handleLogin(BuildContext context, String email, String password,
         '/api/auth/login', {'username_or_email': email, 'password': password});
 
     if (result['success']) {
-      final data = result['payload']['payload'];
+      final data = result['data']['payload'];
       final userId = data['userId'];
       final role = data['role'];
       final token = data['token'];
@@ -27,7 +27,7 @@ Future<void> handleLogin(BuildContext context, String email, String password,
 
       Navigator.pushNamed(context, AppRoutes.home);
     } else {
-      showError(result['description']);
+      showError(result['message']);
     }
   } catch (e) {
     print(e);

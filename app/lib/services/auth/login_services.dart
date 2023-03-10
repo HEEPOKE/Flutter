@@ -18,13 +18,9 @@ class LoginService {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       if (data['status'] == "error") {
-        return {
-          'success': false,
-          'message': data['description'],
-          'payload': []
-        };
+        return {'success': false, 'message': data['description'], 'data': []};
       } else {
-        return {'success': true, 'message': null, 'payload': data};
+        return {'success': true, 'message': null, 'data': data};
       }
     } else {
       return {
