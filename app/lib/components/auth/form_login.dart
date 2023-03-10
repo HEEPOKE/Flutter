@@ -104,17 +104,18 @@ class _LoginFormState extends State<LoginForm> {
       if (result['success']) {
         final data = result['payload']['payload'];
         final userId = data['userId'];
+        final role = data['role'];
         final token = data['token'];
         final exp = data['exp'];
 
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('userId', userId);
+        prefs.setString('role', role);
         prefs.setString('token', token);
         prefs.setString('exp', exp.toString());
         String? storedToken = prefs.getString('token');
         String? storedUserId = prefs.getString('userId');
         String? storedExp = prefs.getString('exp');
-        print(storedUserId);
       } else {
         throw Exception(result['error']);
       }
